@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyen Trong Trung - Profile</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #111827;
+  display: flex; flex-direction: column;
+  align-items: center; padding: 30px 20px; gap: 48px;
+}
+.slide-label {
+  color: rgba(255,255,255,0.4); font-size:11px; letter-spacing:2px;
+  text-transform:uppercase; align-self:flex-start; padding-left:8px;
+  margin-bottom:-36px;
+}
+.slide {
+  width:1280px; height:720px; background:#fff;
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow:0 24px 64px rgba(0,0,0,0.5); border-radius:6px;
+}
+.accent { height:5px; background:linear-gradient(90deg,#B71C1C,#E53935,#EF9A9A,#E53935,#B71C1C); flex-shrink:0; }
+
+/* HDR */
+.hdr {
+  background:linear-gradient(135deg,#1a0505 0%,#6d1111 60%,#C62828 100%);
+  padding:18px 56px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+}
+.hdr-left { display:flex; align-items:center; gap:14px; }
+.hdr-num {
+  width:40px; height:40px; border-radius:50%;
+  border:2px solid rgba(255,255,255,0.25);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.6); font-size:14px; font-weight:700;
+}
+.hdr-sub { color:rgba(255,255,255,0.55); font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; }
+.hdr-name { color:#fff; font-size:20px; font-weight:800; }
+.hdr-badge {
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+  color:#fff; font-size:11px; padding:5px 15px; border-radius:20px; letter-spacing:0.5px;
+}
+
+/* FTR */
+.ftr {
+  background:#1a0505; padding:10px 56px;
+  display:flex; justify-content:space-between; align-items:center; flex-shrink:0;
+}
+.ftr-l { color:rgba(255,255,255,0.35); font-size:9.5px; letter-spacing:1.5px; }
+.ftr-r { color:rgba(255,255,255,0.25); font-size:9.5px; }
+
+/* UTILS */
+.tag { font-size:10.5px; padding:4px 11px; border-radius:20px; font-weight:600; display:inline-block; }
+.tag.red   { background:#FFEBEE; color:#C62828; border:1px solid #FFCDD2; }
+.tag.blue  { background:#E3F2FD; color:#1565C0; border:1px solid #BBDEFB; }
+.tag.green { background:#E8F5E9; color:#2E7D32; border:1px solid #C8E6C9; }
+.tag.org   { background:#FFF3E0; color:#E65100; border:1px solid #FFE0B2; }
+.tag.dark  { background:#EDE7F6; color:#4527A0; border:1px solid #D1C4E9; }
+.sec-label {
+  font-size:9.5px; font-weight:700; text-transform:uppercase;
+  letter-spacing:2px; color:#90a4ae;
+  padding-bottom:8px; border-bottom:2px solid #ffebee; margin-bottom:14px;
+}
+
+/* ══════ SLIDE 1 — COVER ══════ */
+.s1-body { flex:1; display:flex; }
+.s1-left {
+  width:400px; flex-shrink:0;
+  background:linear-gradient(160deg,#3E0000 0%,#C62828 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  padding:40px 32px; position:relative; overflow:hidden;
+}
+.s1-left::before { content:''; position:absolute; width:300px; height:300px; border-radius:50%; background:rgba(255,255,255,0.04); top:-80px; left:-80px; }
+.s1-left::after  { content:''; position:absolute; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.04); bottom:-60px; right:-40px; }
+.s1-avatar {
+  width:130px; height:130px; border-radius:50%;
+  background:rgba(255,255,255,0.12); border:3px solid rgba(255,255,255,0.3);
+  display:flex; align-items:center; justify-content:center; font-size:56px;
+  position:relative; z-index:1;
+}
+.s1-fullname { color:#fff; font-size:24px; font-weight:900; text-align:center; z-index:1; }
+.s1-vn { color:rgba(255,255,255,0.6); font-size:13px; text-align:center; z-index:1; }
+.s1-divider { width:50px; height:2px; background:rgba(255,255,255,0.3); border-radius:1px; z-index:1; }
+.s1-chip {
+  background:rgba(255,255,255,0.12); border-radius:8px;
+  padding:8px 18px; text-align:center; z-index:1; width:100%;
+}
+.s1-chip .lbl { font-size:9px; color:rgba(255,255,255,0.5); letter-spacing:1.5px; text-transform:uppercase; }
+.s1-chip .val { font-size:12.5px; font-weight:700; color:#fff; margin-top:2px; }
+
+.s1-right { flex:1; padding:40px 50px; display:flex; flex-direction:column; gap:20px; }
+.s1-headline { font-size:15px; color:#C62828; font-weight:700; margin-bottom:4px; }
+.s1-desc { font-size:12.5px; color:#455A64; line-height:1.8; }
+.s1-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.s1-card {
+  background:#FFF5F5; border:1px solid #FFCDD2; border-radius:10px; padding:13px 15px;
+}
+.s1-card .ic { font-size:20px; margin-bottom:5px; }
+.s1-card .lbl { font-size:9.5px; color:#90a4ae; text-transform:uppercase; letter-spacing:1.2px; margin-bottom:3px; }
+.s1-card .val { font-size:12.5px; font-weight:700; color:#1a1a2e; }
+.s1-card .sub { font-size:11px; color:#78909C; margin-top:1px; }
+
+/* ══════ SLIDE 2 — CAREER ══════ */
+.s2-body { flex:1; display:flex; }
+.s2-side {
+  width:300px; flex-shrink:0;
+  background:linear-gradient(180deg,#FFF5F5,#FFEBEE);
+  border-right:1px solid #FFCDD2;
+  padding:30px 26px; display:flex; flex-direction:column; gap:18px;
+}
+.s2-main { flex:1; padding:32px 46px; display:flex; flex-direction:column; gap:6px; }
+
+.tl-item {
+  display:flex; gap:14px; align-items:flex-start;
+  padding-bottom:20px; position:relative;
+}
+.tl-item::after {
+  content:''; position:absolute; left:70px; top:26px; bottom:0; width:2px;
+  background:linear-gradient(180deg,#C62828,#FFCDD2);
+}
+.tl-item:last-child::after { display:none; }
+.tl-item:last-child { padding-bottom:0; }
+.tl-yr { width:62px; flex-shrink:0; text-align:right; padding-top:2px; }
+.tl-yr span { font-size:10px; font-weight:700; color:#C62828; background:#FFEBEE; padding:3px 7px; border-radius:4px; display:inline-block; }
+.tl-dot-w { display:flex; flex-direction:column; align-items:center; flex-shrink:0; margin-top:4px; }
+.tl-dot { width:12px; height:12px; border-radius:50%; background:#C62828; border:2px solid #fff; box-shadow:0 0 0 2px #C62828; }
+.tl-body strong { font-size:13.5px; font-weight:800; color:#1a0505; display:block; margin-bottom:2px; }
+.tl-body .co { font-size:11px; font-weight:600; color:#C62828; margin-bottom:4px; display:block; }
+.tl-body p { font-size:11.5px; color:#546E7A; line-height:1.6; }
+
+.kpi-box { background:#FFF5F5; border-radius:10px; padding:14px 16px; }
+.kpi-box .kpi-lbl { font-size:9.5px; color:#90a4ae; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px; font-weight:700; }
+.kpi-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.kpi-row:last-child { margin-bottom:0; }
+.kpi-dot { width:7px; height:7px; border-radius:50%; background:#C62828; flex-shrink:0; }
+.kpi-row span { font-size:11.5px; color:#1a1a2e; font-weight:600; }
+.kpi-row small { font-size:10px; color:#78909C; }
+
+/* ══════ SLIDE 3 — SERVICES ══════ */
+.s3-body { flex:1; padding:24px 52px 20px; display:flex; flex-direction:column; gap:16px; }
+.svc-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+.svc-card { border-radius:12px; overflow:hidden; border:1px solid #FFCDD2; box-shadow:0 4px 14px rgba(198,40,40,0.08); }
+.svc-hdr { padding:15px 18px 13px; }
+.svc-hdr.r1 { background:linear-gradient(135deg,#B71C1C,#C62828); }
+.svc-hdr.r2 { background:linear-gradient(135deg,#880E4F,#AD1457); }
+.svc-hdr.r3 { background:linear-gradient(135deg,#4A148C,#6A1B9A); }
+.svc-hdr.r4 { background:linear-gradient(135deg,#1A237E,#283593); }
+.svc-hdr.r5 { background:linear-gradient(135deg,#004D40,#00695C); }
+.svc-hdr.r6 { background:linear-gradient(135deg,#E65100,#F57C00); }
+.svc-icon { font-size:24px; margin-bottom:5px; }
+.svc-name { font-size:14px; font-weight:800; color:#fff; }
+.svc-sub  { font-size:10px; color:rgba(255,255,255,0.65); margin-top:1px; }
+.svc-body { padding:13px 16px; background:#fff; }
+.feat { display:flex; gap:7px; align-items:flex-start; margin-bottom:7px; }
+.feat:last-child { margin-bottom:0; }
+.feat .ck { color:#C62828; font-size:11px; flex-shrink:0; margin-top:1px; }
+.feat p { font-size:11px; color:#455A64; line-height:1.5; }
+.feat p strong { color:#1a1a2e; }
+
+.stat-row { display:flex; gap:12px; }
+.stat-box {
+  flex:1; border-radius:10px;
+  background:linear-gradient(135deg,#3E0000,#C62828);
+  padding:13px; text-align:center;
+}
+.stat-box .num { font-size:22px; font-weight:900; color:#fff; }
+.stat-box .lbl { font-size:9.5px; color:rgba(255,255,255,0.65); margin-top:2px; line-height:1.4; }
+
+/* ══════ SLIDE 4 — ROLE ══════ */
+.s4-body { flex:1; display:flex; }
+.s4-left { flex:1; padding:30px 40px; display:flex; flex-direction:column; gap:16px; }
+.s4-right {
+  width:360px; flex-shrink:0;
+  background:linear-gradient(180deg,#FFF5F5,#FFEBEE);
+  border-left:1px solid #FFCDD2;
+  padding:30px 28px; display:flex; flex-direction:column; gap:16px;
+}
+.eco-grid { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+.eco-card { border-radius:10px; background:#fff; border:1px solid #FFCDD2; box-shadow:0 3px 10px rgba(0,0,0,0.04); overflow:hidden; }
+.eco-top { height:5px; }
+.eco-top.r { background:linear-gradient(90deg,#C62828,#EF5350); }
+.eco-top.p { background:linear-gradient(90deg,#880E4F,#E91E63); }
+.eco-top.b { background:linear-gradient(90deg,#1A237E,#1976D2); }
+.eco-top.g { background:linear-gradient(90deg,#1B5E20,#43A047); }
+.eco-body { padding:13px 15px; }
+.eco-body .ic { font-size:18px; margin-bottom:5px; }
+.eco-body .nm { font-size:13px; font-weight:800; color:#1a0505; margin-bottom:3px; }
+.eco-body .ds { font-size:11px; color:#607D8B; line-height:1.5; }
+
+.role-panel {
+  background:linear-gradient(135deg,#3E0000,#C62828);
+  border-radius:12px; padding:18px 20px;
+}
+.rp-title { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:12px; }
+.ri { display:flex; gap:10px; align-items:flex-start; margin-bottom:11px; }
+.ri:last-child { margin-bottom:0; }
+.ri-dot { width:8px; height:8px; border-radius:50%; background:#FFAB91; flex-shrink:0; margin-top:4px; }
+.ri strong { font-size:12px; font-weight:700; color:#fff; display:block; margin-bottom:2px; }
+.ri span { font-size:10.5px; color:rgba(255,255,255,0.62); line-height:1.5; }
+
+.vision-box {
+  background:#fff; border-radius:10px;
+  border-left:4px solid #C62828; padding:13px 15px;
+}
+.vision-box .vb-lbl { font-size:9.5px; color:#90a4ae; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin-bottom:6px; }
+.vision-box .vb-text { font-size:11.5px; color:#37474F; line-height:1.7; font-style:italic; }
+
+.trait-row { display:flex; flex-direction:column; gap:8px; }
+.trait-item {
+  display:flex; gap:10px; align-items:center;
+  background:#fff; border-radius:8px; padding:9px 12px;
+  border:1px solid #FFCDD2;
+}
+.trait-item .ti-ic { font-size:16px; flex-shrink:0; }
+.trait-item strong { font-size:12px; font-weight:700; color:#1a0505; display:block; }
+.trait-item span { font-size:10.5px; color:#78909C; }
+</style>
+</head>
+<body>
+
+<!-- ════ SLIDE 1 — COVER ════ -->
+<div class="slide-label">Slide 1 / 4 — Introduction</div>
+<div class="slide">
+  <div class="accent"></div>
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-num">01</div>
+      <div>
+        <div class="hdr-sub">Vietnamese Business Partner — Profile Overview</div>
+        <div class="hdr-name">Nguyen Trong Trung · เหงียน จ่อง ตรุง</div>
+      </div>
+    </div>
+    <div class="hdr-badge">📣 TheGodAds LLC · Vietnam / USA</div>
+  </div>
+
+  <div class="s1-body">
+    <div class="s1-left">
+      <div class="s1-avatar">👨‍💼</div>
+      <div class="s1-fullname">Nguyen Trong Trung</div>
+      <div class="s1-vn">เหงียน จ่อง ตรุง</div>
+      <div class="s1-divider"></div>
+      <div class="s1-chip">
+        <div class="lbl">สัญชาติ</div>
+        <div class="val">🇻🇳 สาธารณรัฐสังคมนิยมเวียดนาม</div>
+      </div>
+      <div class="s1-chip">
+        <div class="lbl">ตำแหน่ง</div>
+        <div class="val">Founder & Managing Director</div>
+      </div>
+      <div class="s1-chip">
+        <div class="lbl">บริษัท</div>
+        <div class="val">TheGodAds LLC</div>
+      </div>
+      <div class="s1-chip">
+        <div class="lbl">ที่ตั้ง</div>
+        <div class="val">Vietnam · USA (Wyoming)</div>
+      </div>
+    </div>
+
+    <div class="s1-right">
+      <div>
+        <div class="s1-headline">ผู้เชี่ยวชาญด้าน Digital Advertising Infrastructure & Facebook Ad Ecosystem ระดับสากล</div>
+        <div class="s1-desc">Nguyen Trong Trung คือผู้ก่อตั้งและ Managing Director ของ TheGodAds LLC บริษัทผู้ให้บริการ Ad Account Infrastructure ระดับ Enterprise จดทะเบียนทั้งในเวียดนามและสหรัฐอเมริกา (Wyoming) เขามีความเชี่ยวชาญด้าน Facebook Ads, Whitelisted Agency Accounts และ Multi-market Advertising พร้อมสร้างระบบนิเวศธุรกิจโฆษณาดิจิทัลที่รองรับตลาด CLMV และระดับโลก</div>
+      </div>
+
+      <div class="s1-grid">
+        <div class="s1-card">
+          <div class="ic">📣</div>
+          <div class="lbl">บริษัทหลัก</div>
+          <div class="val">TheGodAds LLC</div>
+          <div class="sub">Founder & Managing Director</div>
+        </div>
+        <div class="s1-card">
+          <div class="ic">🌐</div>
+          <div class="lbl">เว็บไซต์</div>
+          <div class="val">thegodadsllc.com</div>
+          <div class="sub">intro.nolimittopup.com</div>
+        </div>
+        <div class="s1-card">
+          <div class="ic">💰</div>
+          <div class="lbl">Core Service</div>
+          <div class="val">Enterprise Ad Accounts</div>
+          <div class="sub">Facebook · Meta · Multi-platform</div>
+        </div>
+        <div class="s1-card">
+          <div class="ic">🌏</div>
+          <div class="lbl">ตลาดที่ดำเนินงาน</div>
+          <div class="val">Vietnam · CLMV · Global</div>
+          <div class="sub">Multi-market & Multi-industry</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-label">ความเชี่ยวชาญหลัก</div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <span class="tag red">Facebook Ads</span>
+          <span class="tag red">Whitelisted Agency Ads</span>
+          <span class="tag blue">Ad Account Infrastructure</span>
+          <span class="tag blue">Multi-market Scaling</span>
+          <span class="tag green">Performance Marketing</span>
+          <span class="tag green">Large Budget Management</span>
+          <span class="tag org">CLMV Market Expert</span>
+          <span class="tag dark">Ad Tech Solutions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="ftr-l">3T GROUP CO., LTD. — BOI APPLICATION 2025 · CATEGORY 8.1</div>
+    <div class="ftr-r">SLIDE 1 / 4</div>
+  </div>
+</div>
+
+
+<!-- ════ SLIDE 2 — CAREER ════ -->
+<div class="slide-label">Slide 2 / 4 — Career & Experience</div>
+<div class="slide">
+  <div class="accent"></div>
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-num">02</div>
+      <div>
+        <div class="hdr-sub">Career Journey & Work Experience</div>
+        <div class="hdr-name">Nguyen Trong Trung — ประวัติการทำงาน</div>
+      </div>
+    </div>
+    <div class="hdr-badge">🗂 Professional Timeline</div>
+  </div>
+
+  <div class="s2-body">
+    <div class="s2-side">
+      <div class="sec-label">Key Strengths</div>
+      <div class="kpi-box">
+        <div class="kpi-lbl">จุดแข็งสำคัญ</div>
+        <div class="kpi-row"><div class="kpi-dot"></div><span>Whitelisted Agency</span><small>&nbsp;Meta Official Partner</small></div>
+        <div class="kpi-row"><div class="kpi-dot"></div><span>Multi-industry</span><small>&nbsp;รองรับหลายประเภทธุรกิจ</small></div>
+        <div class="kpi-row"><div class="kpi-dot"></div><span>Large Budget Scale</span><small>&nbsp;งบโฆษณาระดับ Enterprise</small></div>
+        <div class="kpi-row"><div class="kpi-dot"></div><span>Global Coverage</span><small>&nbsp;Multi-market Teams</small></div>
+        <div class="kpi-row"><div class="kpi-dot"></div><span>Policy Solution</span><small>&nbsp;แก้ปัญหา Ad Policy ได้</small></div>
+      </div>
+
+      <div class="sec-label">ทักษะหลัก</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="tag red">Facebook Ads</span>
+        <span class="tag red">Meta Business</span>
+        <span class="tag blue">Google Ads</span>
+        <span class="tag green">TikTok Ads</span>
+        <span class="tag org">Digital Strategy</span>
+        <span class="tag dark">Business Dev</span>
+      </div>
+
+      <div class="sec-label">ภาษาสื่อสาร</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="tag dark">🇻🇳 Vietnamese (Native)</span>
+        <span class="tag dark">🇬🇧 English (Business)</span>
+      </div>
+    </div>
+
+    <div class="s2-main">
+      <div class="sec-label">ประวัติการทำงานและเส้นทางอาชีพ</div>
+
+      <div class="tl-item">
+        <div class="tl-yr"><span>2019–Now</span></div>
+        <div class="tl-dot-w"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <strong>Founder & Managing Director — TheGodAds LLC</strong>
+          <span class="co">📣 TheGodAds LLC · Sheridan, Wyoming, USA / Vietnam</span>
+          <p>ก่อตั้งและบริหาร TheGodAds LLC บริษัทผู้ให้บริการ Enterprise Ad Account Infrastructure ระดับสากล เชื่อมต่อนักการตลาดกับ Facebook Ad Accounts ระดับ Whitelisted Agency สนับสนุนธุรกิจหลายประเภทในการ Scale โฆษณาข้ามตลาดได้อย่างเสถียร</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-yr"><span>2020–Now</span></div>
+        <div class="tl-dot-w"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <strong>Co-Founder — Nolimit Topup · CÔNG TY TNHH TRUYỀN THÔNG NOLIMIT</strong>
+          <span class="co">💳 Nolimit Media & Communications Co., Ltd. · Vietnam</span>
+          <p>ร่วมก่อตั้งและพัฒนาแพลตฟอร์ม Nolimit Topup ระบบเติมเงินและบริหารงบโฆษณาออนไลน์แบบครบวงจร รองรับสกุลเงินหลายสกุลและวิธีชำระเงินหลากหลาย ทั้ง Credit Card, Wire Transfer, SWIFT และ Cryptocurrency</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-yr"><span>2021–Now</span></div>
+        <div class="tl-dot-w"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <strong>Senior Facebook Ads Strategist & Policy Specialist</strong>
+          <span class="co">⚙️ TheGodAds · Ad Operations Division</span>
+          <p>วางกลยุทธ์โฆษณา Facebook/Meta ระดับ Enterprise บริหารงบโฆษณาขนาดใหญ่โดยไม่กระทบ Delivery ให้คำปรึกษาด้าน Policy Violation และแก้ไขปัญหาการถูกจำกัดบัญชีโฆษณาให้กับลูกค้าทั้งในเวียดนามและต่างประเทศ</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-yr"><span>2023–Now</span></div>
+        <div class="tl-dot-w"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <strong>Business Director & Market Expansion Consultant — CLMV Region</strong>
+          <span class="co">🌏 Cross-border Business Development · Vietnam · Thailand · CLMV</span>
+          <p>ขยายเครือข่ายธุรกิจดิจิทัลในกลุ่มประเทศ CLMV ให้คำปรึกษาด้าน Digital Advertising Strategy แก่ SME และองค์กรขนาดกลาง พัฒนาความร่วมมือกับพาร์ทเนอร์ไทย รวมถึงการร่วมก่อตั้ง 3T Group สู่ตลาดไทย</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="ftr-l">3T GROUP CO., LTD. — BOI APPLICATION 2025 · CATEGORY 8.1</div>
+    <div class="ftr-r">SLIDE 2 / 4</div>
+  </div>
+</div>
+
+
+<!-- ════ SLIDE 3 — SERVICES ════ -->
+<div class="slide-label">Slide 3 / 4 — Services & Solutions</div>
+<div class="slide">
+  <div class="accent"></div>
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-num">03</div>
+      <div>
+        <div class="hdr-sub">Services & Advertising Solutions</div>
+        <div class="hdr-name">Nguyen Trong Trung — บริการและโซลูชั่นโฆษณา</div>
+      </div>
+    </div>
+    <div class="hdr-badge">🚀 TheGodAds Service Portfolio</div>
+  </div>
+
+  <div class="s3-body">
+    <div class="sec-label">บริการหลักจาก TheGodAds LLC</div>
+    <div class="svc-grid">
+
+      <div class="svc-card">
+        <div class="svc-hdr r1">
+          <div class="svc-icon">🛡️</div>
+          <div class="svc-name">Whitelisted Agency Ad Accounts</div>
+          <div class="svc-sub">Facebook · Meta Official Partner</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>เสถียรสูง</strong> — บัญชีระดับ Whitelisted ลด Policy Violation</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Unlimited Opening</strong> — เปิด Ad Account ได้ไม่จำกัด On Demand</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Multi-industry Support</strong> — รองรับธุรกิจทุกประเภท</p></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-hdr r2">
+          <div class="svc-icon">📈</div>
+          <div class="svc-name">Large Budget Scaling</div>
+          <div class="svc-sub">Enterprise Campaign Management</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>งบขนาดใหญ่</strong> — รองรับ Budget ระดับ Enterprise โดยไม่ชะลอ Delivery</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Consistent Delivery</strong> — ส่งโฆษณาสม่ำเสมอหลายแคมเปญพร้อมกัน</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Lower Risk</strong> — ลดความเสี่ยงช่วง Rapid Expansion</p></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-hdr r3">
+          <div class="svc-icon">💳</div>
+          <div class="svc-name">Nolimit Topup Platform</div>
+          <div class="svc-sub">Ad Spend Payment & Top-up System</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>Multi-currency</strong> — รองรับสกุลเงินหลากหลายทั่วโลก</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>หลายช่องทางชำระ</strong> — Card, Wire, ACH, SWIFT, Crypto</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Manage Anytime</strong> — บริหารบัญชีโฆษณาจากทุกที่ผ่าน App</p></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-hdr r4">
+          <div class="svc-icon">🌏</div>
+          <div class="svc-name">Multi-market Ad Infrastructure</div>
+          <div class="svc-sub">Cross-border Campaign Support</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>Multi-market Teams</strong> — Optimized สำหรับทีมที่ดำเนินงานหลายประเทศ</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Dedicated Support</strong> — Account Manager ดูแลเฉพาะลูกค้า</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>CLMV Focus</strong> — เชี่ยวชาญตลาดเวียดนาม ไทย และภูมิภาค</p></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-hdr r5">
+          <div class="svc-icon">⚙️</div>
+          <div class="svc-name">Policy Violation Solutions</div>
+          <div class="svc-sub">Ad Account Recovery & Consulting</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>Account Recovery</strong> — แก้ไขบัญชีที่ถูก Ban หรือ Restricted</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Policy Consulting</strong> — วางแนวทางให้ผ่าน Policy ระยะยาว</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Facebook Invoice</strong> — บริหารระบบ Invoice โฆษณาระดับองค์กร</p></div>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-hdr r6">
+          <div class="svc-icon">🤝</div>
+          <div class="svc-name">Digital Strategy Consulting</div>
+          <div class="svc-sub">Full-funnel Growth Advisory</div>
+        </div>
+        <div class="svc-body">
+          <div class="feat"><div class="ck">✦</div><p><strong>Ad Foundation</strong> — สร้าง Infrastructure โฆษณาที่แข็งแกร่ง</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Scale Roadmap</strong> — วางแผนขยายตลาดข้ามประเทศ</p></div>
+          <div class="feat"><div class="ck">✦</div><p><strong>Multi-product Growth</strong> — รองรับการขยายหลายผลิตภัณฑ์พร้อมกัน</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="num">6+</div><div class="lbl">บริการหลัก</div></div>
+      <div class="stat-box"><div class="num">Multi</div><div class="lbl">Industry Support</div></div>
+      <div class="stat-box"><div class="num">CLMV</div><div class="lbl">Market Coverage</div></div>
+      <div class="stat-box"><div class="num">US+VN</div><div class="lbl">จดทะเบียน 2 ประเทศ</div></div>
+      <div class="stat-box"><div class="num">24/7</div><div class="lbl">Dedicated Support</div></div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="ftr-l">3T GROUP CO., LTD. — BOI APPLICATION 2025 · CATEGORY 8.1</div>
+    <div class="ftr-r">SLIDE 3 / 4</div>
+  </div>
+</div>
+
+
+<!-- ════ SLIDE 4 — ECOSYSTEM & 3T ROLE ════ -->
+<div class="slide-label">Slide 4 / 4 — Business Ecosystem & Role in 3T Group</div>
+<div class="slide">
+  <div class="accent"></div>
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-num">04</div>
+      <div>
+        <div class="hdr-sub">Business Ecosystem & Role in 3T Group</div>
+        <div class="hdr-name">Nguyen Trong Trung — ระบบนิเวศธุรกิจและบทบาทใน 3T Group</div>
+      </div>
+    </div>
+    <div class="hdr-badge">🤝 Partnership & Vision</div>
+  </div>
+
+  <div class="s4-body">
+    <div class="s4-left">
+      <div>
+        <div class="sec-label">ระบบนิเวศธุรกิจ Nguyen Trong Trung</div>
+        <div class="eco-grid">
+          <div class="eco-card">
+            <div class="eco-top r"></div>
+            <div class="eco-body">
+              <div class="ic">📣</div>
+              <div class="nm">TheGodAds LLC</div>
+              <div class="ds">Whitelisted Facebook Ad Account Provider · Enterprise Scale · จดทะเบียน Wyoming, USA และเวียดนาม · thegodadsllc.com</div>
+            </div>
+          </div>
+          <div class="eco-card">
+            <div class="eco-top p"></div>
+            <div class="eco-body">
+              <div class="ic">💳</div>
+              <div class="nm">Nolimit Topup · Nolimit Media</div>
+              <div class="ds">CÔNG TY TNHH TRUYỀN THÔNG NOLIMIT — ระบบเติมเงินโฆษณาและบริหาร Ad Budget ครบวงจร Multi-currency</div>
+            </div>
+          </div>
+          <div class="eco-card">
+            <div class="eco-top b"></div>
+            <div class="eco-body">
+              <div class="ic">🤖</div>
+              <div class="nm">3T Group Co., Ltd. (Thailand)</div>
+              <div class="ds">Joint Venture ไทย-เวียดนาม · Co-Founder ฝ่ายเวียดนาม · ดูแล Business Development และตลาดเวียดนาม</div>
+            </div>
+          </div>
+          <div class="eco-card">
+            <div class="eco-top g"></div>
+            <div class="eco-body">
+              <div class="ic">🌏</div>
+              <div class="nm">CLMV Partner Network</div>
+              <div class="ds">เครือข่ายพันธมิตรธุรกิจดิจิทัลครอบคลุมเวียดนาม ไทย กัมพูชา ลาว เมียนมา — Revenue Pipeline ต่างประเทศให้ 3T</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-box">
+        <div class="vb-lbl">วิสัยทัศน์ (Business Vision)</div>
+        <div class="vb-text">"When expanding across markets, models, and products — success depends on a strong ad foundation built to scale. เมื่อธุรกิจขยายข้ามตลาดและผลิตภัณฑ์ ความสำเร็จขึ้นอยู่กับ Infrastructure โฆษณาที่แข็งแกร่งและพร้อม Scale อย่างยั่งยืน"</div>
+      </div>
+    </div>
+
+    <div class="s4-right">
+      <div class="sec-label">บทบาทใน 3T Group Co., Ltd.</div>
+      <div class="role-panel">
+        <div class="rp-title">Business Director & Co-Founder (Vietnamese Side)</div>
+        <div class="ri">
+          <div class="ri-dot"></div>
+          <div>
+            <strong>นำตลาดเวียดนาม — B2B & B2G Pipeline</strong>
+            <span>ดูแลการพัฒนาลูกค้าองค์กรและภาครัฐในเวียดนาม เชื่อมโยงกับเครือข่าย TheGodAds</span>
+          </div>
+        </div>
+        <div class="ri">
+          <div class="ri-dot"></div>
+          <div>
+            <strong>Digital Advertising Strategy สำหรับ 3T Platform</strong>
+            <span>วางแผนกลยุทธ์โฆษณาดิจิทัลให้กับแพลตฟอร์ม AI Secretary และ Omnichannel Chat</span>
+          </div>
+        </div>
+        <div class="ri">
+          <div class="ri-dot"></div>
+          <div>
+            <strong>Foreign Revenue — เป้า 20% ของรายได้รวม</strong>
+            <span>สร้าง Revenue Stream จากลูกค้าเวียดนามและ CLMV เข้า 3T Group ตามแผน BOI</span>
+          </div>
+        </div>
+        <div class="ri">
+          <div class="ri-dot"></div>
+          <div>
+            <strong>ผู้ถือหุ้น 49% (Vietnamese Side)</strong>
+            <span>ตัวแทนฝ่ายเวียดนามในโครงสร้าง JV 51% Thai / 49% Vietnamese ของ 3T Group</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-label" style="margin-top:4px;">จุดแข็งที่นำมาสู่ 3T Group</div>
+      <div class="trait-row">
+        <div class="trait-item">
+          <div class="ti-ic">📣</div>
+          <div>
+            <strong>Ad Account Infrastructure</strong>
+            <span>เครือข่าย Whitelisted Facebook Ads พร้อมให้ 3T ใช้ขยายตลาด</span>
+          </div>
+        </div>
+        <div class="trait-item">
+          <div class="ti-ic">🌏</div>
+          <div>
+            <strong>Vietnam & CLMV Network</strong>
+            <span>เครือข่ายลูกค้าและพันธมิตรธุรกิจในภูมิภาคพร้อมทันที</span>
+          </div>
+        </div>
+        <div class="trait-item">
+          <div class="ti-ic">💳</div>
+          <div>
+            <strong>Payment & Topup Ecosystem</strong>
+            <span>Nolimit Topup รองรับระบบชำระเงินข้ามพรมแดนให้ 3T Platform</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr">
+    <div class="ftr-l">3T GROUP CO., LTD. — BOI APPLICATION 2025 · CATEGORY 8.1</div>
+    <div class="ftr-r">SLIDE 4 / 4</div>
+  </div>
+</div>
+
+</body>
+</html>
